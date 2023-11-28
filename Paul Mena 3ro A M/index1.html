@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mcdonald`s Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #navbar {
+            background-color: #Ffcc00 ;
+            color: #000;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: -250px; /* Ocultar el menú lateral fuera de la pantalla inicialmente */
+            width: 250px;
+            height: 100%;
+            box-sizing: border-box;
+            transition: 0.5s; /* Agregar una transición suave para animar el despliegue del menú */
+            overflow-y: auto; /* Permitir desplazamiento vertical si el contenido es demasiado largo */
+        }
+
+        #navbar a {
+            color: #000;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            transition: background-color 0.3s; /* Agregar una transición suave para el cambio de color al pasar el ratón */
+        }
+
+        #navbar a:hover {
+            background-color: #F12612;
+        }
+
+        #menu-icon {
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1; /* Colocar el icono sobre el contenido */
+        }
+
+        #logo {
+            text-align: center;
+            padding: 20px;
+            background-color: #F12612;
+        }
+
+        #footer {
+            background-color: #F12612;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #social-icons {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="menu-icon">&#9776;</div> <!-- Icono de menú hamburguesa -->
+
+    <div id="navbar">
+        <br>
+        <br>
+        <div id="logo">
+            <br>
+            <!-- Coloca aquí tu logotipo -->
+            <img src="src/mcdonalds1.webp" alt="Logotipo" style="max-width: 100%;">
+        </div>
+        <a href="#">Inicio </a>
+        <a href="#">Quiénes Somos</a>
+        <a href="#">Contacto </a>
+        <a href="#">Redes Sociales </a>
+    </div>
+
+    <header>
+        <div id="logo">
+            <!-- Coloca aquí tu logotipo -->
+            <img src="src/mcdonalds logo header.png" alt="Logotipo" style="max-width: 8%;">
+        </div>
+    </header>
+
+    <div id="footer">
+        <i class="fab fa-instagram" id="social-icons"></i>
+        <img src="src/redes.png" alt="Logotipo" style="max-width: 15%;">
+        <i class="fab fa-facebook" id="social-icons"></i>
+        <i class="fab fa-tiktok" id="social-icons"></i>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+    <script>
+        // JavaScript para manejar la apertura/cierre del menú
+        document.getElementById("menu-icon").addEventListener("click", function() {
+            var navbar = document.getElementById("navbar");
+            if (navbar.style.left === "0px") {
+                navbar.style.left = "-250px";
+            } else {
+                navbar.style.left = "0px";
+            }
+        });
+    </script>
+
+</body>
+</html>
