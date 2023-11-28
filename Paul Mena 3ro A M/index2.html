@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McDonald's Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black; /* Cambio de color de fondo a negro */
+            color: white; /* Cambio de color de texto a blanco */
+        }
+
+        #navbar {
+            background-color: #Ffcc00;
+            color: #000;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            box-sizing: border-box;
+            transition: 0.5s;
+            overflow-y: auto;
+        }
+
+        #navbar a {
+            color: #000;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        #navbar a:hover {
+            background-color: #F12612;
+        }
+
+        #menu-icon {
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+
+        #logo {
+            text-align: center;
+            padding: 20px;
+            background-color: #F12612;
+        }
+
+        #footer {
+            background-color: #F12612;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #social-icons {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #fff;
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide-content {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
+            width: 100%; /* Ajuste a 100% para ocupar el ancho del contenedor */
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Centrar la imagen */
+        }
+
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Slider Circles */
+        .slider-circles {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slider-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slider-circle:hover {
+            background-color: #F12612;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="menu-icon">&#9776;</div>
+
+    <div id="navbar">
+        <br>
+        <br>
+        <div id="logo">
+            <br>
+            <img src="src/mcdonalds1.webp" alt="Logotipo" style="max-width: 100%;">
+        </div>
+        <a href="#">Inicio </a>
+        <a href="#">Quiénes Somos</a>
+        <a href="#">Contacto </a>
+        <a href="#">Redes Sociales </a>
+    </div>
+
+    <header>
+        <div id="logo">
+            <!-- Coloca aquí tu logotipo -->
+            <img src="src/mcdonalds logo header.png" alt="Logotipo" style="max-width: 8%; margin: 0 auto;">
+        </div>
+    </header>
+
+    <!-- Slider Section -->
+    <div class="slider-container">
+        <div class="slider-wrapper">
+            <div class="slide">
+                <div class="slide-content">
+                    <img src="src/imagen1.png" alt="Imagen 1">
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <img src="src/imagen2.jpeg" alt="Imagen 2">
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <img src="src/imagen3.jpeg" alt="Imagen 3">
+                </div>
+            </div>
+        </div>
+        <!-- Slider Navigation Buttons -->
+        <div class="prev">&#10094;</div>
+        <div class="next">&#10095;</div>
+        <!-- End Slider Section -->
+
+        <!-- Slider Circles -->
+        <div class="slider-circles">
+            <div class="slider-circle" onclick="changeSlide(0)"></div>
+            <div class="slider-circle" onclick="changeSlide(1)"></div>
+            <div class="slider-circle" onclick="changeSlide(2)"></div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <!-- Contenido del Footer --> 
+        <p>Derechos Reservados &copy; 2023 McDonald's</p>
+        <p>Contacto: info@mcdonalds.com</p>
+        <p>Ubicación: Av. La Prensa, Quito, Ecuador</p>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById("menu-icon").addEventListener("click", function () {
+            var navbar = document.getElementById("navbar");
+            if (navbar.style.left === "0px") {
+                navbar.style.left = "-250px";
+            } else {
+                navbar.style.left = "0px";
+            }
+        });
+
+        // JavaScript for slider navigation
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.querySelector('.next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        // Function to update slider based on circle click
+        function changeSlide(index) {
+            currentIndex = index;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const translateValue = -currentIndex * 100 + '%';
+            document.querySelector('.slider-wrapper').style.transform = 'translateX(' + translateValue + ')';
+            updateSliderCircles();
+        }
+
+        // Function to update active state of circles
+        function updateSliderCircles() {
+            const circles = document.querySelectorAll('.slider-circle');
+            circles.forEach((circle, index) => {
+                circle.style.backgroundColor = index === currentIndex ? '#F12612' : '#fff';
+            });
+        }
+    </script>
+
+</body>
+
+</html>
