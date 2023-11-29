@@ -12,6 +12,7 @@
             padding: 0;
             background-color: black; /* Cambio de color de fondo a negro */
             color: white; /* Cambio de color de texto a blanco */
+            overflow-x: hidden; /* Evita que aparezca la barra de desplazamiento horizontal al abrir el menú */
         }
 
         #navbar {
@@ -27,6 +28,7 @@
             box-sizing: border-box;
             transition: 0.5s;
             overflow-y: auto;
+            z-index: 2; /* Asegura que el menú esté por encima del slider */
         }
 
         #navbar a {
@@ -47,13 +49,20 @@
             position: fixed;
             top: 10px;
             left: 10px;
-            z-index: 1;
+            z-index: 3; /* Asegura que el ícono del menú esté por encima del menú y el slider */
+        }
+
+        #slider {
+            position: relative;
+            z-index: 1; /* Asegura que el slider esté detrás del menú */
+            width: 100%;
         }
 
         #logo {
             text-align: center;
             padding: 20px;
             background-color: #F12612;
+            width: 100%;
         }
 
         #footer {
@@ -61,9 +70,9 @@
             color: #fff;
             text-align: center;
             padding: 10px;
-            position: fixed;
-            bottom: 0;
+            position: absolute;
             width: 100%;
+            z-index: 3; /* Asegura que el footer esté por encima de todo */
         }
 
         #social-icons {
@@ -87,22 +96,14 @@
         .slide {
             min-width: 100%;
             box-sizing: border-box;
-        }
-
-        .slide-content {
-            width: 80%;
-            max-width: 600px;
-            margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .slide img {
-            width: 100%; /* Ajuste a 100% para ocupar el ancho del contenedor */
-            height: auto;
-            display: block;
-            margin: 0 auto; /* Centrar la imagen */
+            width: 100%; /* Las imágenes ocuparán el 100% del ancho del contenedor */
+            height: auto; /* Se ajusta automáticamente la altura para mantener la proporción */
         }
 
         .prev,
@@ -155,6 +156,30 @@
         .slider-circle:hover {
             background-color: #F12612;
         }
+
+        /* Contenido debajo del slider */
+        .contenido-bajo-slider {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: justify;
+            display: flex;
+            justify-content: space-between; /* Distribuye el espacio horizontalmente */
+            align-items: center; /* Centra verticalmente el contenido */
+        }
+
+        .contenido-bajo-slider p {
+            max-width: 60%; /* Establece el ancho máximo del párrafo */
+            
+            
+        }
+
+        .contenido-bajo-slider img {
+            max-width: 35%; /* Establece el ancho máximo de la imagen */
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+
+        
     </style>
 </head>
 
@@ -172,8 +197,8 @@
         <a href="#">Inicio </a>
         <a href="#">Quiénes Somos</a>
         <a href="#">Contacto </a>
-        <a href="#">Redes Sociales </a>
     </div>
+
 
     <header>
         <div id="logo">
@@ -183,21 +208,21 @@
     </header>
 
     <!-- Slider Section -->
-    <div class="slider-container">
+    <div id="slider" class="slider-container">
         <div class="slider-wrapper">
             <div class="slide">
                 <div class="slide-content">
-                    <img src="src/imagen1.png" alt="Imagen 1">
+                    <img src="src/imagen1.jpg" alt="Imagen 1">
                 </div>
             </div>
             <div class="slide">
                 <div class="slide-content">
-                    <img src="src/imagen2.jpeg" alt="Imagen 2">
+                    <img src="src/imagen2.png" alt="Imagen 2">
                 </div>
             </div>
             <div class="slide">
                 <div class="slide-content">
-                    <img src="src/imagen3.jpeg" alt="Imagen 3">
+                    <img src="src/imagen3.jpg" alt="Imagen 3">
                 </div>
             </div>
         </div>
@@ -213,9 +238,33 @@
             <div class="slider-circle" onclick="changeSlide(2)"></div>
         </div>
     </div>
+    <h1>Cajita Feliz Libros</h1>
+    <!-- Otro espacio para el siguiente párrafo e imagen -->
+    <div class="contenido-bajo-slider">
+        
+        <p>
+            McDonald's, el coloso global de la industria de la comida rápida, ha transcendido su papel tradicional no solo como un lugar para satisfacer el hambre apremiante, sino como un defensor elocuente de la educación y la imaginación a través de su ingeniosa iniciativa de los libros en la Cajita Feliz. Más allá de ofrecer hamburguesas, papas fritas y juguetes coloridos, la cadena ha ideado una manera brillante de infundir una pasión por la lectura desde una edad temprana. Las cajitas felices no son solo contenedores de alimentos, sino auténticos cofres literarios que despiertan la curiosidad y estimulan el aprendizaje de los jóvenes comensales.
+            La selección cuidadosa de libros que acompañan a la Cajita Feliz revela un compromiso profundo con la educación y el desarrollo cognitivo de los niños. Desde clásicos atemporales hasta narrativas contemporáneas, la diversidad de opciones demuestra una consideración meticulosa hacia las diferentes edades y gustos. Estos libros no solo son herramientas educativas, sino portales a mundos fantásticos que alimentan la imaginación y fomentan el amor por la lectura. La estrategia de McDonald's no solo radica en la calidad del contenido literario, sino en la forma en que ha integrado de manera armoniosa el disfrute de la comida con la experiencia de aprendizaje, transformando cada visita a sus establecimientos en una aventura educativa y entretenida.
+            Al convertirse en un catalizador para la conexión entre padres e hijos en el acto de compartir una comida y explorar historias juntos, McDonald's ha logrado ir más allá de la esfera de la alimentación rápida y ha establecido un puente entre generaciones. Este enfoque integral en el desarrollo holístico de los niños, que abarca tanto el ámbito físico como el intelectual, evidencia una visión a largo plazo y un entendimiento profundo de la importancia de la formación temprana.
+            Así, McDonald's no solo se erige como un gigante en la escena de la comida rápida, sino también como un defensor apasionado de la educación y la creatividad, contribuyendo de manera significativa al tejido social y cultural alrededor del mundo. A través de sus libros en la Cajita Feliz, la cadena de restaurantes no solo nutre el cuerpo con sus deliciosas ofertas, sino que también alimenta la mente, sembrando semillas de conocimiento y cultivando el amor por la lectura en las generaciones venideras. En resumen, McDonald's se erige no solo como un destino para satisfacer antojos, sino como un aliado confiable en el viaje hacia el descubrimiento y la educación de los más jóvenes.
+            Con Cajita Feliz siempre podrán elegir entre un juguete o un libro exclusivo gracias a nuestro programa de Cajita Feliz Libros. Fue pensado para fomentar la lectura en los niños, para que desarrollen su imaginación y disfruten de cada página. En asociación con la serie internacional de libros para niños “Little People, BIG DREAMS”, desde McDonald’s contamos historias de personas que han logrado cosas increíbles derribando barreras y superando obstáculos para inspirar a las infancias. Toda esta serie también cuenta con una experiencia digital extendida a la que es posible acceder escaneando el QR dentro de cada libro.</p>
+        <img src="src/parrafo1.jpg" alt="Otra imagen adicional">
+    </div>
+
+    <h1>Locales Mcdonald´s</h1>
+    <!-- Contenido debajo del slider -->
+    <div class="contenido-bajo-slider">
+        <img src="src/parrafo2.jpg" alt="Imagen adicional">
+        <p>
+            Los locales de McDonald's son mucho más que simples puntos de venta de comida rápida; son auténticos espacios de encuentro, conectando comunidades y transcendiéndose a sí mismos como centros culturales modernos. Estos establecimientos, con su icónico diseño y arquitectura, no solo ofrecen una experiencia gastronómica inigualable, sino que también se convierten en testigos de encuentros significativos, desde celebraciones familiares hasta reuniones informales entre amigos. La atmósfera acogedora y vibrante de los locales de McDonald's crea un ambiente único que trasciende las barreras generacionales y culturales. Ya sea disfrutando de un café con amigos, compartiendo una comida rápida después del trabajo o celebrando eventos especiales, los restaurantes McDonald's se han convertido en lugares emblemáticos que forman parte de la rutina diaria de millones de personas en todo el mundo. Además, la innovación constante en diseño y servicios, como áreas de juego para niños, Wi-Fi gratuito y opciones de personalización de pedidos, demuestran el compromiso de McDonald's con la evolución continua para satisfacer las cambiantes necesidades y expectativas de sus clientes. En resumen, los locales de McDonald's no solo ofrecen delicias gastronómicas reconocibles, sino que también son puntos de encuentro que celebran la diversidad y promueven la conexión humana en un entorno moderno y acogedor.
+            McDonald's es una franquicia de restaurantes de comida rápida estadounidense con sede en Chicago, Illinois. Sus principales productos son las hamburguesas, las patatas fritas, los menús para el desayuno y los refrescos. También se encuentra una oferta disponible de batidos, helados, postres y ensaladas de fruta o de verdura (así como otros productos exclusivos dependiendo del país). Atiende aproximadamente a 68 millones de clientes por día, en más de 36.000 establecimientos de 118 territorios y países alrededor del mundo. La cadena empleó en 2014 a 1,7 millones de personas. Por otra parte, en la mayoría de los restaurantes, se han incluido distintas zonas de juegos para niños.
+        </p>
+    </div>
+
+    
 
     <div id="footer">
-        <!-- Contenido del Footer --> 
+        <!-- Contenido del Footer -->
         <p>Derechos Reservados &copy; 2023 McDonald's</p>
         <p>Contacto: info@mcdonalds.com</p>
         <p>Ubicación: Av. La Prensa, Quito, Ecuador</p>
@@ -225,7 +274,7 @@
     <script>
         document.getElementById("menu-icon").addEventListener("click", function () {
             var navbar = document.getElementById("navbar");
-            if (navbar.style.left === "0px") {
+            if (navbar.style.left === "0px" || navbar.style.left === "") {
                 navbar.style.left = "-250px";
             } else {
                 navbar.style.left = "0px";
@@ -266,6 +315,12 @@
                 circle.style.backgroundColor = index === currentIndex ? '#F12612' : '#fff';
             });
         }
+
+        // Auto slide change every 3 seconds
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlider();
+        }, 3000);
     </script>
 
 </body>
